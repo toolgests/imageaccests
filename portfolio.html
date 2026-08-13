@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- djnjdc -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chauhan — App Release Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0E1116;
+      --panel: #151A22;
+      --panel-2: #1B212B;
+      --border: #262C38;
+      --text: #E9ECF2;
+      --dim: #8A93A6;
+      --dim-2: #5C6478;
+      --live: #4ADE9C;
+      --live-dim: rgba(74, 222, 156, 0.12);
+      --review: #F5B94D;
+      --review-dim: rgba(245, 185, 77, 0.12);
+      --test: #9B8CFF;
+      --test-dim: rgba(155, 140, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+/* nsd ks */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--live-dim);
+      color: var(--live);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(14, 17, 22, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--live);
+      box-shadow: 0 0 8px var(--live);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 26px;
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .navlinks a:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
+    header.hero {
+      padding: 88px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--dim-2);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+      margin: 0 0 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    h1 span {
+      color: var(--dim);
+    }
+
+    .lede {
+      font-size: 17px;
+      color: var(--dim);
+      max-width: 560px;
+      line-height: 1.6;
+      margin: 0 0 40px;
+    }
+
+    /* pipeline strip - signature element */
+    .pipeline {
+      margin-top: 8px;
+    }
+
+    .pipeline-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--dim-2);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .pipeline-bar {
+      display: flex;
+      height: 10px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+    }
+
+    .pipeline-bar span {
+      height: 100%;
+    }
+
+    .seg-live {
+      background: var(--live);
+    }
+
+    .seg-review {
+      background: var(--review);
+    }
+
+    .seg-test {
+      background: var(--test);
+    }
+
+    .pipeline-keys {
+      display: flex;
+      gap: 22px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .pkey {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    .pkey b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .swatch {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--dim-2);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .status-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-chip::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .status-live {
+      background: var(--live-dim);
+      color: var(--live);
+    }
+
+    .status-live::before {
+      background: var(--live);
+    }
+
+    .status-review {
+      background: var(--review-dim);
+      color: var(--review);
+    }
+
+    .status-review::before {
+      background: var(--review);
+    }
+
+    .status-test {
+      background: var(--test-dim);
+      color: var(--test);
+    }
+
+    .status-test::before {
+      background: var(--test);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: border-color .2s, transform .2s;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card:hover {
+      border-color: #3A4254;
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+    }
+
+    .icon-placeholder {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      flex-shrink: 0;
+      background: var(--panel-2);
+      border: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--dim-2);
+      text-align: center;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.3;
+      margin: 0 0 4px;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: var(--dim-2);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .rating {
+      color: var(--review);
+      font-weight: 600;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--dim);
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .pkg {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--dim-2);
+    }
+
+    .card-link {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card-link::after {
+      content: '→';
+      transition: transform .15s;
+    }
+
+    .card-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    /* pending cards */
+    .card.pending {
+      background: var(--panel);
+      border-style: dashed;
+    }
+
+    .card.pending .card-desc {
+      color: var(--dim-2);
+    }
+
+    footer {
+      padding: 48px 0 60px;
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--dim-2);
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    @media (max-width:600px) {
+      header.hero {
+        padding: 64px 0 40px;
+      }
+
+      .navlinks {
+        gap: 16px;
+        font-size: 12px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <div class="brand"><span class="dot"></span>chauhan / apps</div>
+      <div class="navlinks">
+        <a href="#live">Live</a>
+        <a href="#testing">In review</a>
+        <a href="#progress">In progress</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Android developer · Release board</div>
+      <h1>Apps I've shipped,<br><span>reviewed, and I'm building.</span></h1>
+      <p class="lede">A working shelf of Android apps — spanning entertainment, sports, fintech journaling, trading
+        education, and shopping — tracked the way Play Console tracks them: by release state.</p>
+
+      <div class="pipeline">
+        <div class="pipeline-label">Release pipeline · 9 apps</div>
+        <div class="pipeline-bar">
+          <span class="seg-live" style="width:55.5%"></span>
+          <span class="seg-review" style="width:22.5%"></span>
+          <span class="seg-test" style="width:22%"></span>
+        </div>
+        <div class="pipeline-keys">
+          <div class="pkey"><span class="swatch" style="background:var(--live)"></span><b>5</b>&nbsp;Live on Play Store
+          </div>
+          <div class="pkey"><span class="swatch" style="background:var(--review)"></span><b>2</b>&nbsp;In review /
+            testing</div>
+          <div class="pkey"><span class="swatch" style="background:var(--test)"></span><b>2</b>&nbsp;In progress</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="live">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title"><span class="status-chip status-live">Live</span>Published on Play Store</div>
+        <div class="section-sub">public · installable · rated</div>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <div class="card-top">
+            <img class="icon"
+              src="https://play-lh.googleusercontent.com/fyxkS2aYo6RiGxNOy4IZ9LqfVRQx1W1tp6CrQOkcB1TLsOMcLLclwV7JtRzSV5BHZqtbG4wjXs_KIPN0K7LPOGI=w240-h480"
+              alt="POP Cine icon">
+            <div>
+              <p class="card-title">POP Cine — Movie Reviews</p>
+              <div class="card-meta"><span class="rating">★ 4.1</span><span>· 72 reviews</span><span>·
+                  Entertainment</span></div>
+            </div>
+          </div>
+          <p class="card-desc">Trailers, ratings and honest reviews for Bollywood, Hollywood and Tollywood releases — a
+            pocket planner for what to watch next.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.ppcinemoviesugstion</span>
+            <a class="card-link" href="https://play.google.com/store/apps/details?id=com.chauhan.ppcinemoviesugstion"
+              target="_blank" rel="noopener">View</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img class="icon"
+              src="https://play-lh.googleusercontent.com/qKruK9I4fXV7wqFWV6c7iUg0vknGV9cGX5tdjSJ40tzwdGujSGG5_th-HItEGFXhPh5rAMo2qsE4zXgHl0qMzg=w240-h480"
+              alt="StudyClock icon">
+            <div>
+              <p class="card-title">StudyClock – Focus Timer</p>
+              <div class="card-meta"><span>10+ downloads</span><span>· Productivity</span></div>
+            </div>
+          </div>
+          <p class="card-desc">A one-tap focus timer that starts a study session in under 10 seconds — fully offline,
+            daily reminders, and a clean high-contrast clock with no distractions.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.studyclock</span>
+            <a class="card-link" href="https://play.google.com/store/apps/details?id=com.chauhan.studyclock"
+              target="_blank" rel="noopener">View</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <img class="icon"
+              src="https://play-lh.googleusercontent.com/R6UrmrggC4DEbDGEQ7flw335ROVreS6g6nEJmtg11gbP_fbBk1AfyddLbLcZJgmr9lGZNKLHS0b7Br3uBKK1oQ=w240-h480"
+              alt="Cricket Doost icon">
+            <div>
+              <p class="card-title">Cricket Doost: Real Time Score</p>
+              <div class="card-meta"><span>Contains ads</span><span>· Sports</span></div>
+            </div>
+          </div>
+          <p class="card-desc">Ball-by-ball live scores, live line and full men's & women's coverage across
+            international, league and domestic cricket — with points tables and match reminders.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.cricketdost</span>
+            <a class="card-link" href="https://play.google.com/store/apps/details?id=com.chauhan.cricketdost"
+              target="_blank" rel="noopener">View</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <img class="icon"
+              src="https://play-lh.googleusercontent.com/YoHdB_DrZJ1TuIAsMZkSYuf13BtR7fB16A0bzF1AcWpCyGbMGjFiYUtjL5KWoNsrn8LRB4IskWiemnAt_c526Hk=w240-h480"
+              alt="Fortress FX icon">
+            <div>
+              <p class="card-title">Fortress FX Trading Journal</p>
+              <div class="card-meta"><span>Contains ads</span><span>· Productivity</span></div>
+            </div>
+          </div>
+          <p class="card-desc">A calm, paper-toned forex trade journal — log trades across 29 pairs in seconds, track
+            daily P&L and win rate, and review sessions on a monthly calendar.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.fortressfxtradingjournal</span>
+            <a class="card-link"
+              href="https://play.google.com/store/apps/details?id=com.chauhan.fortressfxtradingjournal" target="_blank"
+              rel="noopener">View</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <img class="icon"
+              src="https://play-lh.googleusercontent.com/fFSYsLaLD2WSrGLhaEmC0rv3U9RoTrQyJaW4inmO1bUVGNfq9VRiQ5Rn8AHVE4XMJpg_IFsljKYnZ0u3gx_poAw=w240-h480"
+              alt="QX Signals icon">
+            <div>
+              <p class="card-title">QX Signals: Trading Academy</p>
+              <div class="card-meta"><span class="rating">★ 5.0</span><span>· 5 reviews</span><span>· Education</span>
+              </div>
+            </div>
+          </div>
+          <p class="card-desc">Structured lessons on price action, candlestick patterns, smart money concepts and risk
+            management — trading education, not signals or brokerage.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.quotaxtradingbasics</span>
+            <a class="card-link" href="https://play.google.com/store/apps/details?id=com.chauhan.quotaxtradingbasics"
+              target="_blank" rel="noopener">View</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <img class="icon"
+              src="https://play-lh.googleusercontent.com/EoCfLON2OIfk_wMA1P1lxdZDJ6J9biNpKMJoZBTzPdfi0n7zGSBfV3HxOl8xDs49cnTCgjfNHRzty9SNLg_s2OY=w240-h480"
+              alt="Zynex icon">
+            <div>
+              <p class="card-title">Zynex Trading Journal</p>
+              <div class="card-meta"><span class="rating">★ 3.4</span><span>· 10 reviews</span><span>·
+                  Productivity</span></div>
+            </div>
+          </div>
+          <p class="card-desc">A no-frills journal for recording entry/exit reasoning, strategy, risk-reward and
+            emotional state after every trade — built for self-review, not signals.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.toxa</span>
+            <a class="card-link" href="https://play.google.com/store/apps/details?id=com.chauhan.toxa" target="_blank"
+              rel="noopener">View</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <img class="icon"
+              src="https://play-lh.googleusercontent.com/BrC3xhY-9fCs56xo1ynKflrWq14svElDy35p9WddF-SSNXHLcjxXrtcNd9yI5w54N2hsSvn6aMyJNvQZERq11Q=w240-h480"
+              alt="Gofy Kids Mall icon">
+            <div>
+              <p class="card-title">Gofy Kids Mall</p>
+              <div class="card-meta"><span class="status-chip status-review" style="margin-left:0">Limited
+                  release</span><span>· Shopping</span></div>
+            </div>
+          </div>
+          <p class="card-desc">A kids' shopping mall in one app — fashion, toys, school supplies and baby care from
+            verified sellers, with wishlists and filtered browsing.</p>
+          <div class="card-foot">
+            <span class="pkg">com.bmdu.goffy_app</span>
+            <a class="card-link" href="https://play.google.com/store/apps/details?id=com.bmdu.goffy_app" target="_blank"
+              rel="noopener">View</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="testing">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title"><span class="status-chip status-test">In testing</span>Not yet public</div>
+        <div class="section-sub">closed testing / under review</div>
+      </div>
+      <div class="grid">
+
+        <div class="card pending">
+          <div class="card-top">
+            <div class="icon-placeholder">QS</div>
+            <div>
+              <p class="card-title">Q Signal</p>
+              <div class="card-meta"><span class="status-chip status-test" style="margin-left:0">In testing</span></div>
+            </div>
+          </div>
+          <p class="card-desc">Listed under the developer catalog but not yet resolving on the public Play Store —
+            likely in closed testing or pending review.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.qsignal</span>
+            <span class="pkg" style="color:var(--dim-2)">not public</span>
+          </div>
+        </div>
+
+        <div class="card pending">
+          <div class="card-top">
+            <div class="icon-placeholder">QX</div>
+            <div>
+              <p class="card-title">Quotix</p>
+              <div class="card-meta"><span class="status-chip status-test" style="margin-left:0">In testing</span></div>
+            </div>
+          </div>
+          <p class="card-desc">Another build in the same catalog, not yet resolving publicly — likely a closed-testing
+            track or a listing awaiting Play review.</p>
+          <div class="card-foot">
+            <span class="pkg">com.chauhan.Quotix</span>
+            <span class="pkg" style="color:var(--dim-2)">not public</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="progress">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title"><span class="status-chip status-review">Building</span>In progress</div>
+        <div class="section-sub">console access · publisher accounts</div>
+      </div>
+      <div class="grid">
+
+        <div class="card pending">
+          <div class="card-top">
+            <div class="icon-placeholder">DEV</div>
+            <div>
+              <p class="card-title">New build — SR Ecom Enterprise</p>
+              <div class="card-meta"><span class="status-chip status-review" style="margin-left:0">Dashboard</span>
+              </div>
+            </div>
+          </div>
+          <p class="card-desc">A build currently sitting in the Play Console app dashboard for this developer account —
+            not public yet, so its listing details aren't fetchable from here.</p>
+          <div class="card-foot">
+            <span class="pkg">Play Console — private</span>
+            <a class="card-link"
+              href="https://play.google.com/console/u/0/developers/6803105621838675791/app/4973612441046442207/app-dashboard"
+              target="_blank" rel="noopener">Open</a>
+          </div>
+        </div>
+
+        <div class="card pending">
+          <div class="card-top">
+            <div class="icon-placeholder">NCR</div>
+            <div>
+              <p class="card-title">NCR Freshcut Chops Pvt Ltd</p>
+              <div class="card-meta"><span class="status-chip status-review" style="margin-left:0">Publisher</span>
+              </div>
+            </div>
+          </div>
+          <p class="card-desc">A separate publisher account on Play — worth linking here even before any app under it is
+            public, as a marker of client/company work in progress.</p>
+          <div class="card-foot">
+            <span class="pkg">Developer page</span>
+            <a class="card-link"
+              href="https://play.google.com/store/apps/developer?id=NCR+FRESHCUT+CHOPS+PRIVATE+LIMITED" target="_blank"
+              rel="noopener">Open</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>chauhan/apps — release board, generated from live Play Store data</p>
+      <p>9 apps tracked</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
