@@ -1,75 +1,1281 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - Cricket Dost</title>
-
+  <title>Tushar Chauhan — Full Stack Mobile App Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #0B0F0C;
-      color: #ffffff;
-      line-height: 1.6;
-      padding: 20px;
+    :root {
+      --bg: #0E1116;
+      --panel: #151A22;
+      --panel-2: #1B212B;
+      --border: #262C38;
+      --text: #E9ECF2;
+      --dim: #8A93A6;
+      --dim-2: #5C6478;
+      --live: #4ADE9C;
+      --live-dim: rgba(74, 222, 156, 0.12);
+      --review: #F5B94D;
+      --review-dim: rgba(245, 185, 77, 0.12);
+      --test: #9B8CFF;
+      --test-dim: rgba(155, 140, 255, 0.12);
+      --fiverr: #1DBF73;
+      --upwork: #14A800;
     }
 
-    h1, h2 {
-      color: #FFD400;
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--live-dim);
+      color: var(--live);
     }
 
     a {
-      color: #FFD400;
+      color: inherit;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(14, 17, 22, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--live);
+      box-shadow: 0 0 8px var(--live);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 26px;
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .navlinks a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 18px;
+      border-left: 1px solid var(--border);
+    }
+
+    .nav-hire {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--live-dim);
+      color: var(--live);
+      border: 1px solid rgba(74, 222, 156, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-projects {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--test-dim);
+      color: var(--test);
+      border: 1px solid rgba(155, 140, 255, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-forms-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--panel);
+      color: var(--dim);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      min-width: 260px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      display: flex;
+    }
+
+    .nav-dropdown:hover .nav-forms-btn {
+      color: var(--text);
+      border-color: #3A4254;
+    }
+
+    .nav-dropdown-menu.open {
+      display: flex;
+    }
+
+    .nav-dropdown.open .nav-forms-btn {
+      color: var(--text);
+      border-color: #3A4254;
+    }
+
+    .nav-dropdown-menu a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--dim);
+      text-decoration: none;
+      padding: 9px 10px;
+      border-radius: 8px;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: var(--panel-2);
+      color: var(--text);
+    }
+
+    header.hero {
+      padding: 80px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-top {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .avatar-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--live), var(--test));
+      position: relative;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: var(--panel-2);
+      border: 3px solid var(--bg);
+    }
+
+    .avail-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--live);
+      border: 3px solid var(--bg);
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--dim-2);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avail-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--live-dim);
+      color: var(--live);
+      border: 1px solid rgba(74, 222, 156, 0.3);
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .avail-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--live);
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(30px, 4.4vw, 44px);
+      line-height: 1.1;
+      margin: 0 0 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .lede {
+      font-size: 16px;
+      color: var(--dim);
+      max-width: 600px;
+      line-height: 1.65;
+      margin: 0 0 20px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .contact-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--dim);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: border-color .15s, color .15s;
+    }
+
+    .contact-chip:hover {
+      border-color: var(--live);
+      color: var(--live);
+    }
+
+    .hire-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hire-btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 11px 20px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .15s, opacity .15s;
+      border: 1px solid transparent;
+    }
+
+    .hire-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-fiverr {
+      background: var(--fiverr);
+      color: #062E1B;
+    }
+
+    .btn-upwork {
+      background: var(--upwork);
+      color: #05230A;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--dim-2);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .status-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-chip::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .status-live {
+      background: var(--live-dim);
+      color: var(--live);
+    }
+
+    .status-live::before {
+      background: var(--live);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--live);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--dim-2);
+      margin-top: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .service-card:hover {
+      border-color: #3A4254;
+      transform: translateY(-2px);
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--live-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--live);
+      font-size: 15px;
+    }
+
+    .service-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15.5px;
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+
+    .why-item .check {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: var(--live-dim);
+      color: var(--live);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .why-item p {
+      font-size: 13.5px;
+      color: var(--dim);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .core-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding: 18px 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .core-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--dim-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .core-pill {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--live);
+      background: var(--live-dim);
+      border: 1px solid rgba(74, 222, 156, 0.3);
+      padding: 7px 14px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .core-pill::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--live);
+    }
+
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .skill-card:hover {
+      border-color: #3A4254;
+      transform: translateY(-2px);
+    }
+
+    .skill-card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .skill-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--test);
+    }
+
+    .skill-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dim-2);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 12.5px;
+      color: var(--text);
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 8px;
+      transition: border-color .15s, color .15s;
+    }
+
+    .tag:hover {
+      border-color: var(--test);
+      color: var(--test);
+    }
+
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exp-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .exp-org {
+      font-size: 13px;
+      color: var(--dim);
+      margin: 2px 0 0;
+    }
+
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--dim-2);
+      white-space: nowrap;
+    }
+
+    .exp-points {
+      margin: 4px 0 0;
+      padding-left: 18px;
+      color: var(--dim);
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+
+    .exp-points li {
+      margin-bottom: 2px;
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .info-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .info-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      margin: 0 0 4px;
+      font-weight: 600;
+    }
+
+    .info-card p {
+      font-size: 13px;
+      color: var(--dim);
+      margin: 0 0 4px;
+    }
+
+    .info-card .date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--dim-2);
+    }
+
+    .cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--dim);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+
+    .cert-item::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--live);
+      flex-shrink: 0;
+    }
+
+    .cta-panel {
+      background: linear-gradient(135deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px;
+      text-align: center;
+    }
+
+    .cta-panel h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+
+    .cta-panel p {
+      font-size: 14.5px;
+      color: var(--dim);
+      max-width: 480px;
+      margin: 0 auto 26px;
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 48px 0 60px;
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--dim-2);
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    @media (max-width:600px) {
+      header.hero {
+        padding: 56px 0 40px;
+      }
+
+      .hero-top {
+        gap: 20px;
+      }
+
+      .avatar-wrap {
+        width: 92px;
+        height: 92px;
+      }
+
+      .navlinks {
+        display: none;
+      }
+
+      .nav-actions {
+        padding-left: 0;
+        border-left: none;
+        gap: 8px;
+      }
+
+      .nav-projects,
+      .nav-hire,
+      .nav-forms-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+
+      .nav-dropdown-menu {
+        right: -10px;
+        min-width: 220px;
+      }
+
+      section {
+        padding: 44px 0;
+      }
+
+      .cta-panel {
+        padding: 32px 22px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <p>Last updated: March 2026</p>
 
-    <p>Welcome to <strong>Cricket Dost</strong>. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.</p>
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="dot"></span>chauhan / apps</a>
+      <div class="navlinks">
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="pricing.html">Pricing</a>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-projects" href="portfolio.html">📁 Projects</a>
+        <div class="nav-dropdown" id="formsDropdown">
+          <span class="nav-forms-btn" id="formsBtn" role="button" tabindex="0" aria-haspopup="true"
+            aria-expanded="false">📝 Forms ▾</span>
+          <div class="nav-dropdown-menu" id="formsMenu">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdX9IofA8nVDFpDaiiY7zL19WbHtEYjtJdoV3-mHU56MMat8g/formResponse"
+              target="_blank" rel="noopener">🚀 Mobile App Go-Live &amp; Play Store Release Form</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZMJJEnbZlQUHcApGIVAWOG8wGIQH4Lx-K_bDbyFAAVJ8JZA/viewform"
+              target="_blank" rel="noopener">📋 Project Inquiry Form</a>
+          </div>
+        </div>
+        <a class="nav-hire" href="index.html#hire">Hire me</a>
+      </div>
+    </div>
+  </nav>
 
-    <h2>1. Information We Collect</h2>
-    <p>We may collect the following types of information:</p>
-    <ul>
-      <li>Device information (model, OS version)</li>
-      <li>App usage data</li>
-      <li>Network information</li>
-    </ul>
+  <header class="hero" id="about">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="avatar-wrap">
+          <img class="avatar" src="c11MR6TITRYIkCqo3mlUfCQFqWLzGw2oyON6DD2OEtCWCtQ24EDBA0fTqus9JOgXcz.jpg"
+            alt="Tushar Chauhan"
+            onerror="this.src='https://ui-avatars.com/api/?name=Tushar+Chauhan&background=151A22&color=4ADE9C&size=240&bold=true'">
+          <span class="avail-dot" title="Available for work"></span>
+        </div>
+        <div>
+          <div class="eyebrow">Full stack mobile app developer <span class="avail-badge">Open to work</span></div>
+          <h1>Tushar Chauhan</h1>
+          <p class="lede">Full Stack Mobile Application Developer specializing in Flutter, building and deploying
+            cross-platform apps for Android and iOS. Also builds scalable backends with Django and FastAPI, integrates
+            REST APIs, and has shipped apps on Google Play Console and the Apple App Store.</p>
+        </div>
+      </div>
 
-    <h2>2. How We Use Information</h2>
-    <p>We use the collected information to:</p>
-    <ul>
-      <li>Improve app performance</li>
-      <li>Provide live cricket updates</li>
-      <li>Fix bugs and errors</li>
-    </ul>
+      <div class="contact-row">
+        <a class="contact-chip" href="mailto:Tusharchauhan5873@gmail.com">Tusharchauhan5873@gmail.com</a>
+        <a class="contact-chip" href="tel:7253003785">7253003785</a>
+        <span class="contact-chip">Muradnagar, Ghaziabad, UP</span>
+        <a class="contact-chip" href="https://github.com/flutterdevstudio-arch?tab=repositories" target="_blank"
+          rel="noopener">github.com/chauhan.code</a>
+      </div>
 
-    <h2>3. Firebase & Third-Party Services</h2>
-    <p>Our app uses Firebase services such as Realtime Database. These services may collect and process data according to their own privacy policies.</p>
+      <div class="hire-row">
+        <a class="hire-btn btn-fiverr" href="https://www.fiverr.com/s/wkaarKA" target="_blank" rel="noopener">Hire me on
+          Fiverr</a>
+        <a class="hire-btn btn-upwork" href="https://www.upwork.com/freelancers/~0102a25a780cd414f3?mp_source=share"
+          target="_blank" rel="noopener">Hire me on Upwork</a>
+        <a class="hire-btn btn-outline" href="mailto:Tusharchauhan5873@gmail.com">Email me directly</a>
+      </div>
+    </div>
+  </header>
 
-    <h2>4. Data Security</h2>
-    <p>We take reasonable steps to protect your data but cannot guarantee complete security.</p>
+  <section>
+    <div class="wrap">
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-num">11</div>
+          <div class="stat-label">Apps published</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Internships &amp; roles</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">7+</div>
+          <div class="stat-label">Languages &amp; stacks</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>5. Children's Privacy</h2>
-    <p>Our app is not intended for children under 13. We do not knowingly collect personal data from children.</p>
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title">Services</div>
+        <div class="section-sub">what I can build for you</div>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">FL</div>
+          <h4>Flutter App Development</h4>
+          <p>Cross-platform Android &amp; iOS apps from a single Flutter codebase — clean architecture, smooth UI, and
+            production-ready builds.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">API</div>
+          <h4>Backend &amp; REST APIs</h4>
+          <p>Scalable backends with Django and FastAPI, REST API design, and database work across MySQL, SQLite and
+            Firebase.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔥</div>
+          <h4>Firebase &amp; Auth</h4>
+          <p>Firebase integration, authentication flows, real-time data, and third-party API hookups for dynamic,
+            connected apps.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h4>App Store Deployment</h4>
+          <p>End-to-end publishing on Google Play Console and the Apple App Store, including iOS builds, signing and
+            release management via Xcode.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">UI</div>
+          <h4>UI/UX &amp; Performance</h4>
+          <p>Responsive, user-friendly interfaces with a focus on performance optimization across devices.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚙</div>
+          <h4>Full Project Lifecycle</h4>
+          <p>From concept and architecture through development, testing and deployment — managed start to finish,
+            Agile-style.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>6. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page.</p>
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title">Why work with me</div>
+        <div class="section-sub">strengths</div>
+      </div>
+      <div class="why-grid">
+        <div class="why-item"><span class="check">✓</span>
+          <p>Strong understanding of scalable application architecture</p>
+        </div>
+        <div class="why-item"><span class="check">✓</span>
+          <p>Experience with Agile development methodology</p>
+        </div>
+        <div class="why-item"><span class="check">✓</span>
+          <p>Able to manage the full project lifecycle from development to deployment</p>
+        </div>
+        <div class="why-item"><span class="check">✓</span>
+          <p>Continuous learner with a focus on modern technologies</p>
+        </div>
+        <div class="why-item"><span class="check">✓</span>
+          <p>Clear communicator with strong stakeholder management</p>
+        </div>
+        <div class="why-item"><span class="check">✓</span>
+          <p>Comfortable working solo or as part of a team</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>7. Contact Us</h2>
-    <p>If you have any questions, contact us at:</p>
-    <p>Email: your-email@example.com</p>
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title">Technical skills</div>
+        <div class="section-sub">languages · frameworks · tools</div>
+      </div>
 
-  </div>
+      <div class="core-stack">
+        <div class="core-label">Core stack</div>
+        <div class="core-pill">Flutter</div>
+        <div class="core-pill">Dart</div>
+        <div class="core-pill">Firebase</div>
+        <div class="core-pill">REST APIs</div>
+        <div class="core-pill">Django</div>
+        <div class="core-pill">FastAPI</div>
+      </div>
+
+      <div class="skill-groups">
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <div class="skill-icon">📱</div>
+            <h3>Mobile development</h3>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Kotlin</span>
+            <span class="tag">Android XML UI</span><span class="tag">State management</span>
+            <span class="tag">Cross-platform (iOS &amp; Android)</span><span class="tag">Responsive UI/UX</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <div class="skill-icon">⚡</div>
+            <h3>Backend &amp; APIs</h3>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">FastAPI</span>
+            <span class="tag">REST API design</span><span class="tag">Firebase</span>
+            <span class="tag">MySQL</span><span class="tag">SQLite</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <div class="skill-icon">🚀</div>
+            <h3>Publishing &amp; DevOps</h3>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Google Play Console</span><span class="tag">Apple App Store Connect</span>
+            <span class="tag">Xcode</span><span class="tag">Android Studio</span>
+            <span class="tag">App signing &amp; release</span><span class="tag">Git</span><span
+              class="tag">GitHub</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-head">
+            <div class="skill-icon">◎</div>
+            <h3>Soft skills</h3>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Communication</span><span class="tag">Teamwork</span><span class="tag">Problem
+              solving</span>
+            <span class="tag">Stakeholder management</span><span class="tag">Adaptability</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title">Experience</div>
+        <div class="section-sub">internships · freelance</div>
+      </div>
+      <div class="exp-list">
+
+        <div class="exp-card">
+          <div class="exp-top">
+            <div>
+              <p class="exp-role">Freelance Flutter Developer | Full Stack Developer</p>
+              <p class="exp-org">Self-employed</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="status-chip status-live">Current</span>
+              <span class="exp-date">Jan 2026 – Present</span>
+            </div>
+          </div>
+          <ul class="exp-points">
+            <li>Designed and deployed Android and iOS applications using Flutter</li>
+            <li>Published applications on Google Play Console and Apple App Store</li>
+            <li>Integrated Firebase, authentication systems, and third-party APIs</li>
+            <li>Managed iOS builds, signing, and deployment using Xcode</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-top">
+            <div>
+              <p class="exp-role">Flutter Developer Intern</p>
+              <p class="exp-org">BMDU Pvt. Ltd., Noida (Sector 63)</p>
+            </div>
+            <span class="exp-date">Oct 2025 – Jan 2026</span>
+          </div>
+          <ul class="exp-points">
+            <li>Developed scalable cross-platform applications using Flutter</li>
+            <li>Integrated REST APIs and backend services for dynamic data handling</li>
+            <li>Enhanced UI/UX and optimized performance for multiple devices</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-top">
+            <div>
+              <p class="exp-role">Full Stack Python Developer Intern</p>
+              <p class="exp-org">SIP Pvt. Ltd.</p>
+            </div>
+            <span class="exp-date">Aug 2024 – Oct 2024</span>
+          </div>
+          <ul class="exp-points">
+            <li>Built backend systems using the Django framework</li>
+            <li>Developed and maintained RESTful APIs</li>
+            <li>Worked on full-stack integration with frontend technologies</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title">Education</div>
+        <div class="section-sub">academic background</div>
+      </div>
+      <div class="grid2">
+        <div class="info-card">
+          <h4>Diploma in Computer Science and Information Technology</h4>
+          <p>Ingraham Institute, Ghaziabad</p>
+          <span class="date">June 2023 – July 2025</span>
+        </div>
+        <div class="info-card">
+          <h4>Intermediate (PCM)</h4>
+          <p>Ordnance Factory College, Muradnagar</p>
+          <span class="date">June 2021 – March 2022</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-title">Certifications</div>
+        <div class="section-sub">3 credentials</div>
+      </div>
+      <div class="cert-list">
+        <div class="cert-item">Full Stack Python Developer with Django</div>
+        <div class="cert-item">Full Stack Java Developer</div>
+        <div class="cert-item">Outstanding Performer Award</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hire">
+    <div class="wrap">
+      <div class="cta-panel">
+        <h2>Let's build your app</h2>
+        <p>Available for freelance Flutter, Django/FastAPI backend, and full app-store deployment work — from a single
+          feature to a full product launch.</p>
+        <div class="cta-row">
+          <a class="hire-btn btn-fiverr" href="https://www.fiverr.com/s/wkaarKA" target="_blank" rel="noopener">Hire me
+            on Fiverr</a>
+          <a class="hire-btn btn-upwork" href="https://www.upwork.com/freelancers/~0102a25a780cd414f3?mp_source=share"
+            target="_blank" rel="noopener">Hire me on Upwork</a>
+          <a class="hire-btn btn-outline" href="mailto:Tusharchauhan5873@gmail.com">Tusharchauhan5873@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Tushar Chauhan — Full Stack Mobile App Developer</p>
+      <p>Muradnagar, Ghaziabad, UP</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href*=".html"]').forEach(function (link) {
+      if (link.target === '_blank') return;
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        location.replace(this.getAttribute('href'));
+      });
+    });
+
+    // Forms dropdown: click/tap to open (works on mobile), hover still works on desktop via CSS
+    (function () {
+      var wrap = document.getElementById('formsDropdown');
+      var btn = document.getElementById('formsBtn');
+      var menu = document.getElementById('formsMenu');
+      if (!wrap || !btn || !menu) return;
+
+      function closeMenu() {
+        wrap.classList.remove('open');
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function toggleMenu(e) {
+        e.stopPropagation();
+        var isOpen = menu.classList.contains('open');
+        if (isOpen) { closeMenu(); }
+        else {
+          wrap.classList.add('open');
+          menu.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+      btn.addEventListener('click', toggleMenu);
+      btn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMenu(e); }
+        if (e.key === 'Escape') { closeMenu(); }
+      });
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) closeMenu();
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+    })();
+  </script>
+
 </body>
+
 </html>
-
-
